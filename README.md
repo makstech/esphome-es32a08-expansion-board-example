@@ -137,10 +137,14 @@ sensor:
       - delta: 0.01
 ```
 
-## Where to Buy
-You can purchase the ES32A08 expansion board from the following links (no affiliation):
+## Real-world examples
 
-[AliExpress](https://www.aliexpress.com/item/1005006202920238.html)  
+- [ESPHome Irrigation System](https://github.com/makstech/esphome-irrigation-system) – My own use-case for this board.
+
+## Where to Buy
+You can purchase the ES32A08 expansion board from the following links:
+
+[AliExpress](https://s.click.aliexpress.com/e/_DBexHoH)  
 [Amazon.com](https://www.amazon.com/Multifunction-Expansion-Digital-Arduino-Ethernet/dp/B0CM6HJCVQ?th=1)  
 [eBay](https://www.ebay.com/itm/335132721050)  
 
