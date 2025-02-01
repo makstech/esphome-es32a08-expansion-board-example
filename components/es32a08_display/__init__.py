@@ -16,8 +16,10 @@ CONFIG_SCHEMA = cv.Schema({
     cv.Optional(CONF_UPDATE_INTERVAL, default="25ms"): cv.time_period,
 }).extend(cv.polling_component_schema("25ms"))
 
-def to_code(config):
+async def to_code(config):
     var = cg.new_Pvariable(config[CONF_ID])
-    cg.add(var.set_text_sensor(config[CONF_TEXT_ID]))
-    cg.add(var.set_shift_register(config[CONF_SN74HC595_ID]))
-    cg.add(var.set_update_interval(config[CONF_UPDATE_INTERVAL]))
+    text_sensor_obj = await cg.get_variable(config[CONF_TEXT_ID])
+    cg.add(var.set_text_sensor(text_sensor_obj))
+    sr_obj = await cg.get_variable(config[CONF_SN74HC595_ID])
+    cg.add(var.set_shift_register(sr_obj))
+    cg.add(var.set_polling_interval(config[CONF_UPDATE_INTERVAL]))
