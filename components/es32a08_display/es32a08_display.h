@@ -2,6 +2,7 @@
 #include "esphome.h"
 #include "esphome/components/sn74hc595/sn74hc595.h"
 
+namespace esphome {
 namespace es32a08 {
 
 /// This component implements a 4-digit 7-segment multiplexed display
@@ -208,3 +209,4 @@ class ES32A08Display : public PollingComponent {
 };
 
 }  // namespace es32a08
+}  // namespace esphome
