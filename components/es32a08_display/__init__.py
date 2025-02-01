@@ -1,7 +1,7 @@
 import esphome.codegen as cg
 import esphome.config_validation as cv
 from esphome.components import text_sensor, sn74hc595
-from esphome.const import CONF_ID, CONF_UPDATE_INTERVAL, UNIT_MS
+from esphome.const import CONF_ID, CONF_UPDATE_INTERVAL
 
 es32a08_ns = cg.esphome_ns.namespace("es32a08")
 ES32A08Display = es32a08_ns.class_("ES32A08Display", cg.PollingComponent)
