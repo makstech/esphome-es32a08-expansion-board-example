@@ -12,7 +12,7 @@ CONF_SN74HC595 = "sn74hc595_id"
 CONFIG_SCHEMA = cv.Schema({
     cv.GenerateID(): cv.declare_id(ES32A08Display),
     cv.Required(CONF_TEXT_ID): cv.use_id(text_sensor.TextSensor),
-    cv.Required(CONF_SN74HC595): cv.use_id(sn74hc595.SN74HC595),
+    cv.Required(CONF_SN74HC595): cv.use_id(sn74hc595.SN74HC595Component),
     cv.Optional(CONF_UPDATE_INTERVAL, default="25ms"): cv.time_period,
 }).extend(cv.polling_component_schema("25ms"))
 
