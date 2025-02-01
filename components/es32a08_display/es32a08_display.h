@@ -13,13 +13,11 @@ namespace es32a08 {
 ///   - Outputs 8-11: digit select lines for digit 1, 2, 3, and 4.
 class ES32A08Display : public PollingComponent {
  public:
-  /// Pointers to externally defined components.
-  /// These must be set via YAML configuration.
-  text_sensor::TextSensor *text_sensor = nullptr;
-  sn74hc595::SN74HC595 *shift_register = nullptr;
-
   /// The update interval is 25ms (about 40Hz per digit refresh)
   ES32A08Display() : PollingComponent(25), current_digit_(0) {}
+
+  void set_text_sensor(text_sensor::TextSensor *ts) { this->text_sensor = ts; }
+  void set_shift_register(sn74hc595::SN74HC595 *sr) { this->shift_register = sr; }
 
   void setup() override {
     if (text_sensor == nullptr || shift_register == nullptr) {
@@ -91,6 +89,8 @@ class ES32A08Display : public PollingComponent {
 
  protected:
   uint8_t current_digit_;
+  text_sensor::TextSensor *text_sensor = nullptr;
+  sn74hc595::SN74HC595 *shift_register = nullptr;
 
   /// Character to segment mapping for a 7-segment display.
   /// The mapping starts at ASCII 32 (space) and supports 95 characters.
