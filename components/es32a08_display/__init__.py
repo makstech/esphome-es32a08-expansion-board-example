@@ -22,4 +22,4 @@ async def to_code(config):
     cg.add(var.set_text_sensor(text_sensor_obj))
     sr_obj = await cg.get_variable(config[CONF_SN74HC595_ID])
     cg.add(var.set_shift_register(sr_obj))
-    cg.add(var.set_polling_interval(config[CONF_UPDATE_INTERVAL]))
+    cg.add(var.set_update_interval(config[CONF_UPDATE_INTERVAL]))
