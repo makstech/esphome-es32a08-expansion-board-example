@@ -1,6 +1,5 @@
 #pragma once
 #include "esphome.h"
-// Include the SN74HC595 hub header. Adjust the include path if needed.
 #include "esphome/components/sn74hc595/sn74hc595.h"
 
 namespace es32a08 {
@@ -25,7 +24,6 @@ class ES32A08Display : public PollingComponent {
     if (text_sensor == nullptr || shift_register == nullptr) {
       ESP_LOGE("es32a08_display", "Both text_sensor and shift_register must be set!");
     }
-    // (Optionally do additional initialization here)
   }
 
   /// Called every 25ms; multiplexes one digit at a time.
