@@ -5,13 +5,13 @@ This repository provides examples on integrating the ESP32 microcontroller with 
 ![ES32A08 Expansion Board](images/es32a08-top.jpg)
 
 ## Board Features
-- **RS485 Interface**
 - **8x Opto-isolated Inputs**: Low-level trigger, NPN type.
 - **8x 10A Relay Outputs**
 - **4x 0-5V/10V Voltage Input**
 - **4x 0/4-20MA Current Input**
 - **4x Buttons**
 - **1x 4-bit Digital Tube Display**
+- **RS485 Interface**: _(bugged, see [below](#rs485))_
 
 ## Examples
 Below are examples demonstrating how to utilize each feature of the ES32A08 board.
@@ -137,6 +137,11 @@ sensor:
       - delta: 0.01
 ```
 
+### RS485
+After many hours of debugging, I discovered that the onboard RS485 interface on the ES32A08 board has a hardware issue causing signal loopback. This interferes with proper device communication and makes the built-in RS485 unusable.
+
+For those who need RS485 functionality, check out #2 where I discuss a possible workaround by using an external RS485 module soldered to the onboard button pins.
+
 ## Real-world examples
 
 - [ESPHome Irrigation System](https://github.com/makstech/esphome-irrigation-system) – My own use-case for this board.
@@ -149,7 +154,6 @@ You can purchase the ES32A08 expansion board from the following links:
 [eBay](https://www.ebay.com/itm/335132721050)  
 
 ### TODO
-- [ ] RS485 Interface example
 - [ ] Current Input example
 - [ ] Digital Tube Display example
 - [ ] Full yaml example
