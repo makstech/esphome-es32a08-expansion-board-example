@@ -137,6 +137,45 @@ sensor:
       - delta: 0.01
 ```
 
+### Current Input  
+`I1` - `GPIO36`  
+`I2` - `GPIO39`  
+`I3` - `GPIO34`  
+`I4` - `GPIO35`  
+
+Here's an example with a 10-bar 4-20mA pressure sensor:
+
+```yaml
+sensor:
+  - platform: adc
+    id: pressure
+    name: "Pressure"
+    device_class: pressure
+    state_class: measurement
+    unit_of_measurement: bar
+    accuracy_decimals: 2
+    attenuation: 0db
+    samples: 64
+    pin:
+      number: GPIO36
+      mode:
+        input: true
+    filters:
+      - lambda: !lambda |-
+          if (isnan(x)) return NAN;
+
+          float min_v = 0.364; // 4mA x 91R
+          float max_v = 1.82; // 20mA x 91R
+          float max_bar = 10.0;
+
+          float bar = (x - min_v) * max_bar / (max_v - min_v);
+          if (bar < 0.0) bar = 0.0;
+          if (bar > max_bar) bar = max_bar;
+          return bar;
+      - round: 2
+      - delta: 0.015
+```
+
 ### RS485
 After many hours of debugging, I discovered that the onboard RS485 interface on the ES32A08 board has a hardware issue causing signal loopback. This interferes with proper device communication and makes the built-in RS485 unusable.
 
@@ -154,7 +193,6 @@ You can purchase the ES32A08 expansion board from the following links:
 [eBay](https://www.ebay.com/itm/335132721050)  
 
 ### TODO
-- [ ] Current Input example
 - [ ] Digital Tube Display example
 - [ ] Full yaml example
 
