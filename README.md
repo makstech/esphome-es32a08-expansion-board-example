@@ -140,7 +140,7 @@ sensor:
 ### RS485
 After many hours of debugging, I discovered that the onboard RS485 interface on the ES32A08 board has a hardware issue causing signal loopback. This interferes with proper device communication and makes the built-in RS485 unusable.
 
-For those who need RS485 functionality, check out #2 where I discuss a possible workaround by using an external RS485 module soldered to the onboard button pins.
+For those who need RS485 functionality, check out https://github.com/makstech/esphome-es32a08-expansion-board-example/issues/2 where I discuss a possible workaround by using an external RS485 module soldered to the onboard button pins.
 
 ## Real-world examples
 
